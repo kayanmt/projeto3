@@ -328,6 +328,8 @@ personagem.marcaDaMorte1=med[1];
 personagem.dinheiro=med[2];
 }}
 
+//punicao para saude mental 0
+
 // controlando imortalidade
 if (personagem.idade>=70){
   personagem.saude=personagem.saude-50;
@@ -339,7 +341,7 @@ if (personagem.idade>=100){
 }
 
 //marca da morte1
-if(saude==0){
+if(personagem.saude==0){
   console.log("Voce negligenciou sua saude, entao a morte 'jogará dados' com voce");
   console.log("Quanto mais jovem voce for menos chance tera de recerber uma 'marca da morte'");
   console.log("Pois se o dado der maior que sua idade voce ganha, boa sorte");

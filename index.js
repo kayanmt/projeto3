@@ -1,7 +1,9 @@
 var prompt = require('prompt-sync')();
 
 function aleatorioentre(min, max) {
-    return Math.random() * (max - min) + min;
+  let k=Math.random() * (max - min) + min;
+  let t=Math.round(k);
+  return t;
   }
 
   function aleatorio() {
@@ -18,7 +20,7 @@ function aleatorioentre(min, max) {
   }
 
 function envelhecimento(k){
-  k=k+(1/3);
+  k=k+(0.334);
   return k;
 }
 
@@ -78,6 +80,7 @@ function estudo(a,b,c){
     avaliacao=aleatorioentre(0,8);
   }
   if (avaliacao>5){
+   console.log("Aprovado");
     a=a+1;
     b=b-15;
     c=c-200;
@@ -85,6 +88,7 @@ function estudo(a,b,c){
     return k;
   }
   if(avaliacao<=5){
+    console.log("Reprovado");
 b=b-30;
 c=c-200;
 let k=[a,b,c];
@@ -199,7 +203,7 @@ return c;
 }
 function surto(a,b,c){
   let k=psicologo(a,c);
-  a=1;
+  a=30;
   c=k[1];
   b=b-40;
   let m= [a,b,c];
@@ -213,43 +217,49 @@ console.log("Voce fez 18 anos e saiu de casa hora de iniciar a vida adulta sozin
 let personagem = {};
 personagem.nome = prompt ("Digite o nome do pernagem: ");
 personagem.idade = 18;
-personagem.saude = aleatorio();
-personagem.saude = aleatorio();
+personagem.saude = aleatorioentre(50,100);
 personagem.dinheiro = 0;
-personagem.saude_mental = aleatorio();
-personagem.fome = aleatorio();
+personagem.saude_mental = aleatorioentre(50,100);
+personagem.fome =aleatorioentre(50,100);
 personagem.marcaDaMorte1=["Nenhuma marca"];
 perstatus="vivo";
 personagem.estudo=0;
 let salario=100;
-while(perstatus==="vivo"){
-  console.log(personagem);
-//digite o que vc quer fazer nesse ciclo
+console.log(personagem);
 console.log("Em cada ano voce pode fazer 3 escolhas, jogar 3 ciclos, escolha o que quer fazer: ");
-let e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7: ")
+while(perstatus==="vivo"){
+  
+//digite o que vc quer fazer nesse ciclo
+let e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7, aperte 8 para ver o status do personagem: ")
 while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
-  e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7: ");
+  e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7, aperto 8 para ver o status do personagem: ");
 }
 //informacao
+if(e==8){console.log(personagem);}
 if(e==7){
-  let escolha=+prompt("\n1-comida\n2-trabalho/aposta\n3-estudar\n4-convivencia social\n5-medico\n6psiclogo\nSobre o que deseja informacao? ");
+  let escolha=+prompt("\n1-comida\n2-trabalho/aposta\n3-estudar\n4-convivencia social\n5-medico\n6-psiclogo\n7-para ver o status do personagem\nSobre o que deseja informacao? ");
 if(escolha==1){
-
+console.log("Faz voce nao morrer de fome\n(caso a fome chegue a 0 voce morre, voce perde 10 de fome a cada ciclo),\nexistem 2 opcoes,\ncomida saudavel de custo 50 reais, te da 40 de saude, 20 de saude mental e 30 de fome\n a segunda opcao e comida nao saudavel\nesta custa 10 reais, aumenta em 30 sua saude mental, reduz em 25 sua saude e da mais 50 de fome");
 }
 if(escolha==2){
-
+console.log("Aqui voce trabalha ou aposta,\ntrabalho te da 100 reais de salario,\n quanto mais estudo voce tem mais voce ganha,\n mas e estressante, logo voce perde 30 de saude mental\n se tiver estudo ocupara cargos mais altos e ficara mais estressado 0,3 em relacao ao 'stress' anterior,\naposta se vencer ganha o valor que apostou no dinheiro,\n e ganha mais 10 de saude mental,\nquando perde perde o valor apostado e perde 5 de saude mental");
 }
 if(escolha==3){
-
+console.log("Estudar,\nvoce pode reprovar ou passar,\nquanto maior sua saude mental mais chance de ser aprovado,\nse tiver mais estudo ganha mais dinheiro (14% a mais no salario para cada vez que estudou),\nEstudar custara 200 reais,\n se aprovado perdera 15 de saude mental\nse reprovado perdera 30 de saude mental, pois estudar e estressante");
 }
 if(escolha==4){
-
+console.log("A convivencia social\numa chance de ganhar saude mental sem gastar,\nse der certo ganhara 40 de saude mental\nse falhar perdera 15 de saude mental,\nmas sempre ganhara 20 de saude");
 }
 if(escolha==5){
-
+console.log("Medico,\nserve para ganhar saude,\nse for num particular custara 300 reais,\ndara 70 de saude\ncaso voce tenha uma marca da morte (cancer nesse caso) voce pode talvez conseguir cura-lo\n(caso sua saude chegue a 0 novamente com a marca da morte voce morre),\no medico pode falhar e se ocorrer voce perdera 20 de saude,\nvoce tambem pode ir ao SUS nao custara nada e tambem pode remover uma marca da morte\ndara 60 de saude caso de certo,\npode haver erro medico (tem mais chance de ocorrer aqui que no particular)\nvoce perdera 30 caso isso ocorra");
 }
 if(escolha==6){
-
+console.log("Psicologo\ncustara 250 reais\ncurara 60 de saude mental,\na saude mental caso chegue a 0 voce tera um surto\nentao compulsoriamente ira ao psicologo gastando o dinheiro,\ne perdendo 40 de saude, e recuperara apenas 30 de saude mental");
+}
+if(escolha==7){console.log(personagem);}
+e=+prompt("Se quiser comer aperte '1',\nse quiser trabalhar/apostar aperte '2',\nse quiser estudar aperte 3,\nse quiser fazer convivencia social aperte 4,\nse quiser ir ao medico aperte 5,\nse quiser ir ao psicologo aperte 6,\nse quiser informcao sobre alguma opcao acima aperte 7\nse quiser ver o status do personagem pressione 8: ")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+e=+prompt("Escolha uma das opcoes a seguir:\nSe quiser comer aperte '1',\nse quiser trabalhar/apostar aperte '2',\nse quiser estudar aperte 3,\nse quiser fazer convivencia social aperte 4,\nse quiser ir ao medico aperte 5,\nse quiser ir ao psicologo aperte 6,\nse quiser informcao sobre alguma opcao acima aperte 7\nse quiser ver o status do personagem pressione 8: ");
 }
 }
 //comida

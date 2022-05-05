@@ -10,24 +10,11 @@ function aleatorioentre(min, max) {
     return l;
   }
 
-  function Morte0(){
-    let k= aleatorioentre(0,2);
-    return k;
+  function Morte1 (b){
 
-  }
-
-  function Morte1 (k){
-    let M=("");
-    if(k==0){
-       M=("Cancer malignino, que pode se espalhar");
-    }
-      if(k==1){
-         M=("Acidente vascular cerebral, gerou sequelas");
-      }
-        if(k==2){
-           M=("Ataque cardiaco, que gerou problemas cardiacos");
-        }
-        return M;
+      b=["Cancer malignino, que pode se espalhar"];
+    
+     return b;
   }
 
 function envelhecimento(k){
@@ -59,8 +46,8 @@ function comidaNaoSaudavel(k,j,l,c){
 
   }
 function trampo (a,b,c,d){
-  a=a+((c*0,14*d)+d);
-  b=b-((c*0,3*30)+30);
+  a=a+((c*0.14*d)+d);
+  b=b-((c*0.3*30)+30);
   let k=[a,b];
   return k;
 }
@@ -68,7 +55,7 @@ function apostar(k,l,s){
   let resultadoAposta=aleatorio();
   if(resultadoAposta<=49){
     console.log("Voce venceu a aposta e ganhou 2x o valor apostado, e voce gostou disso");
-    k=k+l*2;
+    k=k+l;
     s=s+10;
     let c=[k,s];
     return c;
@@ -125,11 +112,11 @@ if(k<30){
 function medicoSUS(a,b){
   let k=[];
   let g=aleatorio();
-  if(b>=0&&b<=2){
+  if(b=="Cancer malignino, que pode se espalhar"){
     let m=aleatorio();
     if(m>=95){
       console.log("parabens voce se curou");
-      b=3;
+      b=["Nenhuma marca"];
       a=a+60;
       k=[a,b];
       return k;
@@ -143,7 +130,7 @@ function medicoSUS(a,b){
     }
 
   }
-  if(b==3){
+  if(b=="Nenhuma marca"){
   if(g>=20){
     console.log("tudo certo");
     a=a+60;
@@ -163,11 +150,11 @@ function medicoSUS(a,b){
 function medico(a,b,c){
   let f=[];
   let g=aleatorio();
-  if(b>=0&&b<=2){
+  if(b=="Cancer malignino, que pode se espalhar"){
     let m=aleatorio();
     if(m>=85){
       console.log("parabens voce se curou");
-      b=3;
+      b=["Nenhuma marca"];
       a=a+70;
       c=c-300;
       f=[a,b,c];
@@ -183,7 +170,7 @@ function medico(a,b,c){
     }
 
   }
-  if(b==3){
+  if(b=="Nenhuma marca"){
   if(g>=10){
     console.log("tudo certo");
     a=a+70;
@@ -210,6 +197,14 @@ b=b-250;
 let c=[a,b];
 return c;
 }
+function surto(a,b,c){
+  let k=psicologo(a,c);
+  a=1;
+  c=k[1];
+  b=b-40;
+  let m= [a,b,c];
+  return m;
+}
 
 
  //texto explicativo
@@ -219,10 +214,11 @@ let personagem = {};
 personagem.nome = prompt ("Digite o nome do pernagem: ");
 personagem.idade = 18;
 personagem.saude = aleatorio();
+personagem.saude = aleatorio();
 personagem.dinheiro = 0;
 personagem.saude_mental = aleatorio();
 personagem.fome = aleatorio();
-personagem.marcaDaMorte1=("Nenhuma marca");
+personagem.marcaDaMorte1=["Nenhuma marca"];
 perstatus="vivo";
 personagem.estudo=0;
 let salario=100;
@@ -230,7 +226,10 @@ while(perstatus==="vivo"){
   console.log(personagem);
 //digite o que vc quer fazer nesse ciclo
 console.log("Em cada ano voce pode fazer 3 escolhas, jogar 3 ciclos, escolha o que quer fazer: ");
-let e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+let e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7: ")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+  e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7: ");
+}
 //informacao
 if(e==7){
   let escolha=+prompt("\n1-comida\n2-trabalho/aposta\n3-estudar\n4-convivencia social\n5-medico\n6psiclogo\nSobre o que deseja informacao? ");
@@ -255,24 +254,42 @@ if(escolha==6){
 }
 //comida
 if(e==1){
+  
   let comer=+prompt("O que voce quer comer? Aperte '1' para comida saudavel , custo 50 e '2' para comida nao saudavel, custo 10");
    while(comer!=1&&comer!=2){
     comer=+prompt("Tecla inavlida, aperte '1' para comida saudavel , custo 50 e '2' para comida nao saudavel, custo 10");
    }
   if (comer==1){
+    if(personagem.dinheiro<50){
+      console.log("Voce nao tem dinheiro para comer comida saudavel, escolha novamente o que quer fazer");
+      e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+      while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+      e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7");
+      }
+    }
+    if(personagem.dinheiro>=50){
  let c=comidaSaudavel(personagem.saude,personagem.dinheiro,personagem.saude_mental,personagem.fome);
  personagem.saude=c[0];
  personagem.dinheiro=c[1];
  personagem.saude_mental=c[2];
  personagem.fome=c[3];
-}
-if (comer==2){
+}}
+
+if (comer==2){  
+  if(personagem.dinheiro<10){
+  console.log("Voce nao tem dinheiro para comer comida nao saudavel, selecione outra opcao");
+  e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7");
+}}
+  if(personagem.dinheiro>=10){
   let c=comidaNaoSaudavel(personagem.saude,personagem.dinheiro,personagem.saude_mental,personagem.fome);
   personagem.saude=c[0];
   personagem.dinheiro=c[1];
   personagem.saude_mental=c[2];
   personagem.fome=c[3];
  }
+}
 }
 
 //trabalho, apostas
@@ -288,19 +305,44 @@ while(trapos!=1&&trapos!=2){
    personagem.saude_mental=y[1];
  }
  if (trapos ==2){
+   let resp="s";
+   while(resp=="s"){
+   if(personagem.dinheiro<=0){
+     console.log("Voce nao tem dinheiro para apostar tente outra opcao");
+     e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7");
+}
+   }
+   if(personagem.dinheiro>0){
    let valorApostado=+prompt("Digite o valor a ser apostado: ");
+   while(personagem.dinheiro<valorApostado){
+    valorApostado=+prompt("Digite o valor a ser apostado, ele deve ser maior ou igual ao dinheiro que  personagem possui: ");
+   }
    let result=apostar(personagem.dinheiro,valorApostado,personagem.saude_mental);
    personagem.dinheiro=result[0];
    personagem.saude_mental=result[1];
- }}
+   resp=prompt("Deseja apostar novamente? Digite 's' para sim e 'n' para nao: ");
+   while(resp!="s"&&resp!="n"){
+     resp=prompt("Digite 's' para apostar novamente e 'n' para parar de apostar: ");
+   }}
+ }}}
 //estudo
 if(e==3){
+  if(personagem.dinheiro<200){
+    console.log("Voce nao tem dinheiro para estudar, selecione outra opcao");
+    e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7");
+}
+  }
+  if(personagem.dinheiro>=200){
 console.log("Voce estuda, se aprovado se aperfeiçoa, fazendo seu salario aumentar 14%, mas e estressante, e custa 200 de dinheiro");
 let resultadoEstudo=estudo(personagem.estudo,personagem.saude_mental,personagem.dinheiro);
 personagem.estudo=resultadoEstudo[0];
 personagem.saude_mental=resultadoEstudo[1];
 personagem.dinheiro=resultadoEstudo[2];
-}
+}}
 //convivencia social
 if(e==4){
 let sau = convivencia(personagem.saude_mental,personagem.saude);
@@ -309,27 +351,49 @@ personagem.saude=sau[1];
 }
 //psicologo
 if(e==6){
+  if(personagem.dinheiro<250){
+    console.log("Voce nao tem dinheiro suficiente para um psicologo tente outra opcao");
+    e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7");
+}
+  }
+  if(personagem.dinheiro>=250){
 let psic=psicologo(personagem.saude_mental,personagem.dinheiro);
 personagem.saude_mental=psic[0];
 personagem.dinheiro=psic[1];
-}
+}}
 //medico
 if(e==5){
+  let es=+prompt("Se voce quiser ir ao SUS digite '2', se quiser ir ao medico particular digite '1': ");
 if(es==1){
+  if(personagem.dinheiro<300){
+    console.log("Voce nao tem dinheiro suficiente para o medico particular, tente outra opcao");
+    e=+prompt("Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7")
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+e=+prompt("Escolha uma das opcoes a seguir: Se quiser comer aperte '1', se quiser trabalhar/apostar aperte '2', se quiser estudar aperte 3, se quiser fazer convivencia social aperte 4, se quiser ir ao medico aperte 5, se quiser ir ao psicologo aperte 6, se quiser informcao sobre alguma opcao acima aperte 7");
+}
+  }
+  if(personagem.dinheiro>=300){
   let med=medico(personagem.saude,personagem.marcaDaMorte1,personagem.dinheiro);
 personagem.saude=med[0];
 personagem.marcaDaMorte1=med[1];
 personagem.dinheiro=med[2];
-}
+}}
 if(es==2){
-  let med=medicoSUS(personagem.saude,personagem.marcaDaMorte1,personagem.dinheiro);
-personagem.saude=med[0];
-personagem.marcaDaMorte1=med[1];
-personagem.dinheiro=med[2];
+  let medSUS=medicoSUS(personagem.saude,personagem.marcaDaMorte1);
+personagem.saude=medSUS[0];
+personagem.marcaDaMorte1=medSUS[1];
+
 }}
 
 //punicao para saude mental 0
-
+if(personagem.saude_mental<=0){
+let sm=surto(personagem.saude_mental,personagem.saude,personagem.dinheiro);
+personagem.saude=sm[1];
+personagem.dinheiro=sm[2];
+personagem.saude_mental=sm[0];
+console.log("Voce surtou pela baixa saude mental, compulsoriamente foi ao psicologo, e perdeu saude");}
 // controlando imortalidade
 if (personagem.idade>=70){
   personagem.saude=personagem.saude-50;
@@ -341,7 +405,7 @@ if (personagem.idade>=100){
 }
 
 //marca da morte1
-if(personagem.saude==0){
+if(personagem.saude<=0&&personagem.marcaDaMorte1=="Nenhuma marca"){
   console.log("Voce negligenciou sua saude, entao a morte 'jogará dados' com voce");
   console.log("Quanto mais jovem voce for menos chance tera de recerber uma 'marca da morte'");
   console.log("Pois se o dado der maior que sua idade voce ganha, boa sorte");
@@ -349,30 +413,32 @@ if(personagem.saude==0){
   console.log("O resultado foi: ",r);
 if (r>personagem.idade){
 console.log("voce deu sorte, seu corpo vence a morte, por hora, saude +1");
-personagem.saude++;
+personagem.saude=1;
 }
 if(r<=personagem.idade){
-  let mm=Morte0();
-personagem.marcaDaMorte1=Morte1(mm);
+personagem.marcaDaMorte1=Morte1(personagem.marcaDaMorte1);
 console.log("Voce deu azar e recebeu uma 'marca da morte'")
-console.log("Sua 'Marca da morte', e um: ", Morte1(mm));
+console.log("Sua 'Marca da morte', e um: ", personagem.marcaDaMorte1);
 console.log("Isso deixará efeitos que podem ser removidos com esforço e idas ao medico");
 console.log("Enquanto a marca permanecer sua saude sempre voltará para 50 no minimo, ao final do ciclo");
 console.log("Se voce atingir 0 de saude com esta marca da morte ainda existindo, voce morre");
-
+personagem.saude=1;
 }}
-if(personagem.saude==0&&personagem.marcaDaMorte1!=("Nenhuma marca")){
+if(personagem.saude<=0&&personagem.marcaDaMorte1=="Cancer malignino, que pode se espalhar"){
   console.log("Voce morreu pela sua segunda marca da morte.");
   perstatus="morto";
 }
-  if(fome==0){
+
+  // fim de ciclo
+  if(personagem.dinheiro<0){
+    console.log("Voce esta endividado");
+  }
+  personagem.idade=envelhecimento(personagem.idade);
+  personagem.fome=fome(personagem.fome);
+  if(personagem.fome<=0){
     console.log("Voce morreu de fome!");
     perstatus="morto";
   }
-
-  // fim de ciclo
-  personagem.idade=envelhecimento(personagem.idade);
-  personagem.fome=fome(personagem.fome);
 if (personagem.saude>100){
   personagem.saude=100;
 }

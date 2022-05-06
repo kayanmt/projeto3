@@ -492,7 +492,7 @@ if(personagem.saude<=0&&personagem.marcaDaMorte1=="Cancer malignino, que pode se
       personagem.saude=is100[1];
       }
       let morte2=aleatorioentre(101,120)
-      if(persinagem.idade==morte2){
+      if(personagem.idade==morte2){
         perstatus="morto";
         console.log("Voce morreu de velhice");
       }

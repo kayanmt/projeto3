@@ -291,7 +291,7 @@ console.log("Medico,\nserve para ganhar saude,\nse for num particular custara 30
 if(escolha==6){
 console.log("Psicologo\ncustara 250 reais\ncurara 60 de saude mental,\na saude mental caso chegue a 0 voce tera um surto\nentao compulsoriamente ira ao psicologo gastando o dinheiro,\ne perdendo 40 de saude, e recuperara apenas 30 de saude mental");
 }
-if(escolha==7){console.log(personagem);}
+if(escolha==7){console.log("Mostra o estado atual do personagem");}
 
 console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
 e=+prompt("O que voce quer fazer? ");
@@ -445,7 +445,15 @@ personagem.saude=medSUS[0];
 personagem.marcaDaMorte1=medSUS[1];
 
 }}
-if(e==8){console.log(personagem);}
+// ver status
+if(e==8){console.log(personagem);
+  console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+  e=+prompt("O que voce quer fazer? ");
+  while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
+    console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    e=+prompt("O que voce quer fazer? ");
+  }
+}
 
 //punicao para saude mental 0
 if(personagem.saude_mental<=0){
@@ -486,7 +494,7 @@ if(personagem.saude<=0&&personagem.marcaDaMorte1=="Cancer malignino, que pode se
     personagem.idade=is70[0];
     personagem.saude=is70[1];
     }
-    if(personagem.idade<=100){
+    if(personagem.idade>=100){
       let is100=envelhecimento100(personagem.idade,personagem.saude);
       personagem.idade=is100[0];
       personagem.saude=is100[1];

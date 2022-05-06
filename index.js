@@ -56,7 +56,7 @@ function fome(f){
 function comidaSaudavel(k,j,l,c){
   console.log("Voce comeu comida saudavel, ganhou 40 de saude, 20 de saude mental e 30 de fome,\n perde 50 reais");
   k=k+40;
-  j=j-30;
+  j=j-50;
    l=l+20;
     c=c+30;
  let a=[k, j, l, c];
@@ -71,8 +71,7 @@ function comidaNaoSaudavel(k,j,l,c){
      c=c+50;
   let a=[k, j, l, c];
   return a;
-
-  }
+}
 function trampo (a,b,c,d){
   a=a+((c*0.14*d)+d);
   b=b-((c*0.3*30)+30);
@@ -136,8 +135,8 @@ if (k>=30){
 }
 if(k<30){
   let i=aleatorioentre(0,2)
-  b=["Aparentemente sua mae possui campo gravitacional proprio","Ao que tudo indica so conversam com voce por pena","Parece que sua familia muda de assunto quando as visitas perguntam sobre voce"];
-    console.log("A convivencia deu errado, mas voce ganha 20 de saude por ter saido, perde 15 de saude mental,\ne ainda e insultado,\n",b[i],"\nvoce nao leva a serio os insultos, afinal pessoas irritadas dizem qualquer coisa para te afetar");
+  let m=["Aparentemente sua mae possui campo gravitacional proprio","Ao que tudo indica so conversam com voce por pena","Parece que sua familia muda de assunto quando as visitas perguntam sobre voce"];
+    console.log("A convivencia deu errado, mas voce ganha 20 de saude por ter saido, perde 15 de saude mental,\ne ainda e insultado,\n",m[i],"\nvoce nao leva a serio os insultos, afinal pessoas irritadas dizem qualquer coisa para te afetar");
   a=a-15;
   b=b+20;
   l=[a,b];
@@ -236,8 +235,9 @@ let c=[a,b];
 return c;
 }
 function surto(a,b,c){
+  console.log("Voce surtou devido a baixa saude mental,\n foi levado cimpulsoriamente ao psicologo");
   let k=psicologo(a,c);
-  console.log("Voce surtou devido a baixa saude mental,\n foi levado cimpulsoriamente ao psicologo,\n perdeu 40 de saude, 250 reais e recuperou 30 de saude mental");
+  console.log("Alem disso voce perdeu 40 de saude,\ne dos 60 de saude mental, que o psicologo te da 30 foram usados para se recuperar do surto,\n logo voce ganhou so 30 de saude mental");
   a=30;
   c=k[1];
   b=b-40;
@@ -264,26 +264,17 @@ console.log("Em cada ano voce pode fazer 3 escolhas, jogar 3 ciclos, escolha o q
 while(perstatus==="vivo"){
   
 //digite o que vc quer fazer nesse ciclo
-console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
 let e=+prompt("O que voce quer fazer? ");
-while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-  console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+  console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
   e=+prompt("O que voce quer fazer? ");
-}
-//status do personagem
-if(e==8){
-  console.log(personagem);
-  console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
-  e=+prompt("O que voce quer fazer? ");
-  while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
-    console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
-    e=+prompt("O que voce quer fazer? ");
-  }
 }
 //informacao71
 if(e==7){
-  let escolha=+prompt("\n1-comida\n2-trabalho/aposta\n3-estudar\n4-convivencia social\n5-medico\n6-psiclogo\n7-para ver o status do personagem\nSobre o que deseja informacao? ");
-if(escolha==1){
+  console.log("\n1-comida\n2-trabalho/aposta\n3-estudar\n4-convivencia social\n5-medico\n6-psiclogo ");
+  let escolha=+prompt("Sobre o que deseja informacao? ");
+  if(escolha==1){
 console.log("Faz voce nao morrer de fome\n(caso a fome chegue a 0 voce morre, voce perde 10 de fome a cada ciclo),\nexistem 2 opcoes,\ncomida saudavel de custo 50 reais, te da 40 de saude, 20 de saude mental e 30 de fome\n a segunda opcao e comida nao saudavel\nesta custa 10 reais,\n aumenta em 30 sua saude mental,\n reduz em 25 sua saude e da mais 50 de fome");
 }
 if(escolha==2){
@@ -301,28 +292,29 @@ console.log("Medico,\nserve para ganhar saude,\nse for num particular custara 30
 if(escolha==6){
 console.log("Psicologo\ncustara 250 reais\ncurara 60 de saude mental,\na saude mental caso chegue a 0 voce tera um surto\nentao compulsoriamente ira ao psicologo gastando o dinheiro,\ne perdendo 40 de saude, e recuperara apenas 30 de saude mental");
 }
-if(escolha==7){console.log("Mostra o estado atual do personagem");}
 
-console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
 e=+prompt("O que voce quer fazer? ");
-while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-  console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+  console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
   e=+prompt("O que voce quer fazer? ");
 }}
 //comida
 if(e==1){
   
-  let comer=+prompt("O que voce quer comer?\n Aperte '1' para comida saudavel,\n custo 50 e '2' para comida nao saudavel, custo 10");
-   while(comer!=1&&comer!=2){
-    comer=+prompt("Tecla inavlida,\n aperte '1' para comida saudavel,\n custo 50 e '2' para comida nao saudavel, custo 10");
-   }
+  console.log("O que voce quer comer?\n Aperte '1' para comida saudavel,\n custo 50 e '2' para comida nao saudavel, custo 10");
+  let comer = +prompt("O que voce quer comer? ");
+  while(comer!=1&&comer!=2){
+    console.log("Tecla inavlida,\n aperte '1' para comida saudavel,\n custo 50 e '2' para comida nao saudavel, custo 10");
+    comer=+prompt("O que voce quer comer? "); 
+  }
   if (comer==1){
     if(personagem.dinheiro<50){
       console.log("Voce nao tem dinheiro para comer comida saudavel, escolha novamente o que quer fazer");
-      console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+      console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
 e=+prompt("O que voce quer fazer? ");
-while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-  console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+  console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
   e=+prompt("O que voce quer fazer? ");
 }
     }
@@ -337,12 +329,12 @@ while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
 if (comer==2){  
   if(personagem.dinheiro<10){
   console.log("Voce nao tem dinheiro para comer comida nao saudavel, selecione outra opcao");
-  console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+  console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
   e=+prompt("O que voce quer fazer? ");
-  while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-    console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+  while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+    console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
     e=+prompt("O que voce quer fazer? ");
-  }
+  }}
   if(personagem.dinheiro>=10){
   let c=comidaNaoSaudavel(personagem.saude,personagem.dinheiro,personagem.saude_mental,personagem.fome);
   personagem.saude=c[0];
@@ -350,14 +342,16 @@ if (comer==2){
   personagem.saude_mental=c[2];
   personagem.fome=c[3];
  }
-}
+
 }}
 
 //trabalho, apostas
 if(e==2){
-let trapos=+prompt("Para trabalhar aperte '1', para apostar aperte '2'");
+console.log("Para trabalhar aperte '1', para apostar aperte '2'");
+let trapos=+prompt("O que voce quer fazer? ");
 while(trapos!=1&&trapos!=2){
-  trapos=+prompt("Tecla inavlida, aperte '1' para trabalhar e '2' para apostar");
+  console.log("Para trabalhar aperte '1', para apostar aperte '2'");
+trapos=+prompt("O que voce quer fazer? ");
  }
  if(trapos ==1){
    console.log("Voce trabalha, e isso e estressante, mas rende algum dinheiro");
@@ -370,17 +364,17 @@ while(trapos!=1&&trapos!=2){
    while(resp=="s"){
    if(personagem.dinheiro<=0){
      console.log("Voce nao tem dinheiro para apostar tente outra opcao");
-     console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+     console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
      e=+prompt("O que voce quer fazer? ");
-     while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-       console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+     while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+       console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
        e=+prompt("O que voce quer fazer? ");
      }
    }
    if(personagem.dinheiro>0){
    let valorApostado=+prompt("Digite o valor a ser apostado: ");
-   while(personagem.dinheiro<valorApostado){
-    valorApostado=+prompt("Digite o valor a ser apostado, ele deve ser maior ou igual ao dinheiro que  personagem possui: ");
+   while(personagem.dinheiro<=valorApostado){
+    valorApostado=+prompt("Digite o valor a ser apostado, ele deve ser menor ou igual ao dinheiro que  personagem possui: ");
    }
    let result=apostar(personagem.dinheiro,valorApostado,personagem.saude_mental);
    personagem.dinheiro=result[0];
@@ -394,10 +388,10 @@ while(trapos!=1&&trapos!=2){
 if(e==3){
   if(personagem.dinheiro<200){
     console.log("Voce nao tem dinheiro para estudar, selecione outra opcao");
-    console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
     e=+prompt("O que voce quer fazer? ");
-    while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-      console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+      console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
       e=+prompt("O que voce quer fazer? ");
     }
   }
@@ -418,10 +412,10 @@ personagem.saude=sau[1];
 if(e==6){
   if(personagem.dinheiro<250){
     console.log("Voce nao tem dinheiro suficiente para um psicologo tente outra opcao");
-    console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
     e=+prompt("O que voce quer fazer? ");
-    while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-      console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+      console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
       e=+prompt("O que voce quer fazer? ");
     }
   }
@@ -432,14 +426,19 @@ personagem.dinheiro=psic[1];
 }}
 //medico
 if(e==5){
-  let es=+prompt("Se voce quiser ir ao SUS digite '1', se quiser ir ao medico particular digite '2': ");
-if(es==2){
+  console.log("Se voce quiser ir ao SUS digite '1', se quiser ir ao medico particular digite '2': ");
+  let es=+prompt("Onde voce quer ir? ");
+  while(es!=1&&es!=2){
+    console.log("Se voce quiser ir ao SUS digite '1', se quiser ir ao medico particular digite '2': ");
+    es=+prompt("Onde voce quer ir? ");
+  }
+  if(es==2){
   if(personagem.dinheiro<300){
     console.log("Voce nao tem dinheiro suficiente para o medico particular, tente outra opcao");
-    console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    console.log("Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
     e=+prompt("O que voce quer fazer? ");
-    while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7&&e!=8){
-      console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7,\nou aperte 8 para ver o status do personagem: ");
+    while(e!=1&&e!=2&&e!=3&&e!=4&&e!=5&&e!=6&&e!=7){
+      console.log("Escolha uma das opcoes a seguir:\n Se quiser comer aperte '1',\n se quiser trabalhar/apostar aperte '2',\n se quiser estudar aperte 3,\n se quiser fazer convivencia social aperte 4,\n se quiser ir ao medico aperte 5,\n se quiser ir ao psicologo aperte 6,\n se quiser informcao sobre alguma opcao acima aperte 7: ");
       e=+prompt("O que voce quer fazer? ");
     }
   }
@@ -524,6 +523,7 @@ if (personagem.saude_mental>100){
 if(personagem.saude>50&&personagem.marcaDaMorte1!=("Nenhuma marca")){
   personagem.saude=50;
 }
+console.log(personagem);
 }
 console.log("Voce Morreu, veja os status do seu personagem");
 console.log(personagem);
